@@ -8,25 +8,6 @@ root.geometry("400x400")
 root.iconbitmap('canvas.ico') 
 root.title("Canvas kasutamine") 
 
-def ring():
-    ring_window = Tk()
-    ring_window.title("Ring")
-    tahvel_1 = Canvas(ring_window, width=500, height=400)
-    tahvel_1.create_text(30, 550, text="Ring", anchor=NW) 
-    colors=["red","blue","yellow"]
-    x0=0
-    y0=0
-    x1=400
-    y1=400
-    p=2
-    for i in range(150):
-        x0+=p 
-        y0+=p 
-        x1-=p 
-        y1-=p 
-        tahvel_1.create_oval(x0,y0,x1,y1, fill=random.choice(colors))
-    tahvel_1.grid()
-
 def ruut():
     ruut_window = Tk()
     ruut_window.title("Ruut")
@@ -50,6 +31,25 @@ def ruut():
         r=r-p
         a=((r)*sqrt(2))/2
     tahvel_2.grid()
+    
+def ringi():
+    ring_window = Tk()
+    ring_window.title("Ring")
+    tahvel_1 = Canvas(ring_window, width=500, height=400)
+    tahvel_1.create_text(30, 550, text="Ring", anchor=NW) 
+    colors=["red","blue","yellow"]
+    x0=0
+    y0=0
+    x1=400
+    y1=400
+    p=2
+    for i in range(150):
+        x0+=p 
+        y0+=p 
+        x1-=p 
+        y1-=p 
+        tahvel_1.create_oval(x0,y0,x1,y1, fill=random.choice(colors))
+    tahvel_1.grid()
 
 def malelaud():
     malelaud_window = Tk()
@@ -163,7 +163,7 @@ var=IntVar()
 def valik():
     figure = var.get()
     if figure == 1:
-        ring()
+        ringi()
     elif figure==2:
         ruut()
     elif figure==3:
