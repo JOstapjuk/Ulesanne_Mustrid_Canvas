@@ -124,41 +124,42 @@ def lulitage_valgust():
     global current_color
     if current_color == "Red":
         current_color = "Yellow"
-        tahvel_7.itemconfig(red_light, fill="White")
-        tahvel_7.itemconfig(yellow_light, fill="Yellow")
+        tahvel_7.itemconfig(Punane_värv, fill="White") # .itemconfig - с этой командой можно динамично менять цвет, длинну или ширину - https://www.tutorialspoint.com/how-to-reconfigure-tkinter-canvas-items#:~:text=If%20you%20need%20to%20configure,width%20using%20itemconfig()%20method.
+        tahvel_7.itemconfig(Kollane_värv, fill="Yellow")
     elif current_color == "Yellow":
         current_color = "Green"
-        tahvel_7.itemconfig(yellow_light, fill="White")
-        tahvel_7.itemconfig(green_light, fill="Green")
+        tahvel_7.itemconfig(Kollane_värv, fill="White")
+        tahvel_7.itemconfig(Roheline_värv, fill="Green")
     else:
         current_color = "Red"
-        tahvel_7.itemconfig(green_light, fill="White")
-        tahvel_7.itemconfig(red_light, fill="Red")
-    valgusfoor_window.after(2000, lulitage_valgust)
+        tahvel_7.itemconfig(Roheline_värv, fill="White")
+        tahvel_7.itemconfig(Punane_värv, fill="Red")
+    valgusfoor_window.after(2000, lulitage_valgust) # .after - так же как и в arduino после промежутка времени меняет цвет - https://www.educba.com/tkinter-after/
 
 def valgusfoor():
     global tahvel_7
-    global red_light
-    global yellow_light
-    global green_light
+    global Punane_värv
+    global Kollane_värv
+    global Roheline_värv
     global valgusfoor_window
+    
     valgusfoor_window = Tk()
     valgusfoor_window.title("Valgusfoor")
-    tahvel_7 = Canvas(valgusfoor_window, width=300, height=300)
+    tahvel_7 = Canvas(valgusfoor_window, width=300, height=350)
     tahvel_7.create_text(25, 20, text="Valgusfoor", anchor=NW)
-    a=150
-    b=160
-    x1=30
-    y1=60
-    y2=105
-    y3=225
-    red_light = tahvel_7.create_rectangle(x1, y1, a, b, width=3, outline="Black", fill="Red")
-    yellow_light = tahvel_7.create_rectangle(x1, y2, a, b, width=3, outline="Black", fill="white")
-    green_light = tahvel_7.create_rectangle(x1, y3, a, b, width=3, outline="Black", fill="white") 
-    tahvel_7.create_rectangle(125, 245, 60, 268, fill="Black") 
-    tahvel_7.create_rectangle(35, 275, 150, 257, fill="Black")
+    a = 150
+    b = 160
+    x1 = 30
+    y1 = 60
+    y2 = 105
+    y3 = 225
+    Punane_värv = tahvel_7.create_rectangle(x1, y1, a, b, width=3, outline="Black", fill="Red")
+    Kollane_värv = tahvel_7.create_rectangle(x1, y2, a, b, width=3, outline="Black", fill="white")
+    Roheline_värv = tahvel_7.create_rectangle(x1, y3, a, b, width=3, outline="Black", fill="white")
+    tahvel_7.create_rectangle(100, 225, 85, 500, fill="Black")
+    tahvel_7.create_rectangle(35, 275, 150, 25, fill="Black")
     tahvel_7.grid()
-
+    
 var=IntVar()
 def valik():
     figure = var.get()
